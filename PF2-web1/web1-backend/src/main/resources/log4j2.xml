@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="WARN">
+    <Properties>
+        <Property name="filePattern">%d{yyyy-MM-dd HH:mm:ss,SSS} %m%n</Property>
+        <Property name="pattern">%d{yyyy-MM-dd HH:mm:ss,SSS} %c{1} %m%n</Property>
+    </Properties>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="console"></AppenderRef>
+        </Root>
+        <Logger name="lsp" level = "trace" additivity="false">
+            <AppenderRef ref="lsp_file"></AppenderRef>
+        </Logger>
+        <Logger name="syn" level="trace" additivity="false">
+            <AppenderRef ref="syn_file"></AppenderRef>
+        </Logger>
+        <Logger name="move" level = "trace" additivity="false">
+            <AppenderRef ref="move_file"></AppenderRef>
+        </Logger>
+        <Logger name="error" level = "trace" additivity="false">
+            <AppenderRef ref="error_file"></AppenderRef>
+        </Logger>
+        <Logger name="log" level="trace" additivity="false">
+            <AppenderRef ref="log_file"></AppenderRef>
+        </Logger>
+        <Logger name="uri" level="trace" additivity="false">
+            <AppenderRef ref="uri_file"></AppenderRef>
+        </Logger>
+        <Logger name="serveruri" level="trace" additivity="false">
+            <AppenderRef ref="server_uri_file"></AppenderRef>
+        </Logger>
+    </Loggers>
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT" follow="true">
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout>
+                <Pattern>${pattern}</Pattern>
+            </PatternLayout>
+        </Console>
+        <RollingRandomAccessFile name="log_file"
+                     fileName="PF/log/log.log"
+                     filePattern="PF/log/log_%d{yyyy-MM-dd}.log">
+            <ThresholdFilter level="TRACE" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout>
+                <Pattern>${pattern}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+            </Policies>
+        </RollingRandomAccessFile>
+        <RollingRandomAccessFile name="lsp_file"
+                     fileName="PF/lsp_log/lsp.log"
+                     filePattern="PF/lsp_log/lsp_%d{yyyy-MM-dd}.log">
+            <ThresholdFilter level="TRACE" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout>
+                <Pattern>${filePattern}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+            </Policies>
+        </RollingRandomAccessFile>
+        <RollingRandomAccessFile name="syn_file"
+                     fileName="PF/syn_log/syn.log"
+                     filePattern="PF/syn_log/syn_%d{yyyy-MM-dd}.log">
+            <ThresholdFilter level="TRACE" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout>
+                <Pattern>${filePattern}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+            </Policies>
+        </RollingRandomAccessFile>
+        <RollingRandomAccessFile name="move_file"
+                     fileName="PF/move_log/move.log"
+                     filePattern="PF/move_log/move_%d{yyyy-MM-dd}.log">
+            <ThresholdFilter level="TRACE" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout>
+                <Pattern>${filePattern}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+            </Policies>
+        </RollingRandomAccessFile>
+        <RollingRandomAccessFile name="error_file"
+                     fileName="PF/error_log/error.log"
+                     filePattern="PF/error_log/error_%d{yyyy-MM-dd}.log">
+            <ThresholdFilter level="TRACE" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout>
+                <Pattern>${filePattern}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+            </Policies>
+        </RollingRandomAccessFile>
+        <RollingRandomAccessFile name="uri_file"
+                     fileName="PF/uri_log/uri.log"
+                     filePattern="PF/uri_log/uri_%d{yyyy-MM-dd}.log">
+            <ThresholdFilter level="TRACE" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout>
+                <Pattern>${filePattern}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+            </Policies>
+        </RollingRandomAccessFile>
+        <RollingRandomAccessFile name="server_uri_file"
+                     fileName="PF/uri_log/suri.log"
+                     filePattern="PF/uri_log/suri_%d{yyyy-MM-dd}.log">
+            <ThresholdFilter level="TRACE" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout>
+                <Pattern>${filePattern}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+            </Policies>
+        </RollingRandomAccessFile>
+        
+    </Appenders>
+</configuration>

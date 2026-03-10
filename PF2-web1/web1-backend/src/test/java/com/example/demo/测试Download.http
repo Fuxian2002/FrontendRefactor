@@ -1,0 +1,4 @@
+POST http://localhost:8085/file/download/LightController
+Accept: application/json
+
+###

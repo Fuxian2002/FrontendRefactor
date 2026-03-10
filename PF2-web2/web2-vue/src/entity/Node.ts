@@ -1,0 +1,14 @@
+import { Phenomenon } from './Phenomenon';
+
+export class Node {
+	node_no: number;	//?????
+	node_type: string;	//???????
+	node_x: number;		//¦Ë?????
+	node_y: number;
+	node_w: number;
+	node_h: number;
+	node_fromList: Node[];	
+	node_toList: Node[];
+	pre_condition: Phenomenon;
+	post_condition: Phenomenon;
+}

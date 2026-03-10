@@ -1,0 +1,1 @@
+node node_modules/vite/bin/vite.js > web2_debug.log 2>&1

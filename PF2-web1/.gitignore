@@ -1,0 +1,28 @@
+# Existing rules
+*.tar
+*.yml
+
+# Dependencies
+node_modules/
+target/
+
+# System
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Runtime generated files
+web1-backend/PF/
+web1-backend/logs/
+web1-backend/lsp_log/
+
+# Build
+dist/
+build/
+
+# IDE
+.idea/
+.vscode/

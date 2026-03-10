@@ -1,0 +1,62 @@
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+.flattened-pom.xml
+*.jar
+!lib/*.jar
+
+# Node / npm
+node_modules/
+dist/
+build/
+npm-debug.log
+package-lock.json
+yarn.lock
+.npmrc
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+*.iml
+.classpath
+.project
+.settings/
+bin/
+
+# Vite
+.vite/
+
+# Logs
+*.log
+logs/
+
+# Environment
+.env
+.env.local
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Development
+temp/
+tmp/
+.cache/
+
+# Compiled
+*.class
+*.o
+*.a
+*.so
+
+# WebStorm
+.WebStorm*

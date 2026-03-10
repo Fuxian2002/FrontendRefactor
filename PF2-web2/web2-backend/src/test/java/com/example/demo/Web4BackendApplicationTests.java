@@ -1,0 +1,15 @@
+package com.example.demo;
+
+import com.example.demo.bean.Node;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+class Web4BackendApplicationTests {
+
+	@Test
+	void contextLoads() {
+
+	}
+
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContextDiagram>
+  <title>ContextDiagram</title>
+  <Machine machine_name="machine" machine_shortname="M1" machine_locality="275,290,100,200"/>
+  <ProblemDomain>
+    <GivenDomain>
+      <Element problemdomain_no="1" problemdomain_name="Problem domain" problemdomain_shortname="D1" problemdomain_type="Clock" problemdomain_locality="626,170,60,140"/>
+      <Element problemdomain_no="2" problemdomain_name="Problem domain" problemdomain_shortname="D2" problemdomain_type="Clock" problemdomain_locality="626,423,60,140"/>
+    </GivenDomain>
+    <DesignDomain/>
+  </ProblemDomain>
+  <Interface>
+    <Element interface_description="Interface1" interface_no="1" interface_locality="0,0,0,0" interface_from="M1" interface_to="D1" interface_name="Interface1">
+      <Phenomenon phenomenon_no="1" phenomenon_name="d1 pulse" phenomenon_shortname="d1 pulse" phenomenon_type="signal" phenomenon_from="D1" phenomenon_to=""/>
+    </Element>
+    <Element interface_description="Interface2" interface_no="2" interface_locality="0,0,0,0" interface_from="M1" interface_to="D2" interface_name="Interface2">
+      <Phenomenon phenomenon_no="1" phenomenon_name="d2 pulse" phenomenon_shortname="d2 pulse" phenomenon_type="signal" phenomenon_from="D2" phenomenon_to=""/>
+    </Element>
+  </Interface>
+</ContextDiagram>

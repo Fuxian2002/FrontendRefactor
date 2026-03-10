@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+  <title>TestPowerOn</title>
+  <fileList>
+    <IntentDiagram>req_model/IntentDiagram</IntentDiagram>
+    <ContextDiagram>req_model/ContextDiagram</ContextDiagram>
+    <ProblemDiagram>req_model/ProblemDiagram</ProblemDiagram>
+    <SenarioGraphList>
+      <SenarioGraph>req_model/SG1-Power-on</SenarioGraph>
+    </SenarioGraphList>
+    <SubProblemDiagramList/>
+    <TraceList/>
+    <DataDependenceList/>
+    <ControlDependenceList/>
+  </fileList>
+</project>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ProblemDiagram>
+  <ContextDiagram>ContextDiagram</ContextDiagram>
+  <title>ProblemDiagram</title>
+  <Requirement>
+    <Element requirement_no="1" requirement_context="Power-on" requirement_shortname="Power-on" requirement_locality="830,325,60,120"/>
+  </Requirement>
+  <Constraint>
+    <Element constraint_description="Constraint1" constraint_no="1" constraint_locality="0,0,0,0" constraint_from="D1" constraint_to="Power-on" constraint_name="Constraint1">
+      <Phenomenon phenomenon_no="1" phenomenon_name=" D1 power-on state state" phenomenon_shortname=" D1 power-on state state" phenomenon_type="event" phenomenon_from="D1" phenomenon_to="" phenomenon_constraint="" phenomenon_requirement="0"/>
+    </Element>
+    <Element constraint_description="Constraint2" constraint_no="2" constraint_locality="0,0,0,0" constraint_from="D2" constraint_to="Power-on" constraint_name="Constraint2">
+      <Phenomenon phenomenon_no="1" phenomenon_name=" D2 power-on state state" phenomenon_shortname=" D2 power-on state state" phenomenon_type="event" phenomenon_from="D2" phenomenon_to="" phenomenon_constraint="" phenomenon_requirement="0"/>
+    </Element>
+  </Constraint>
+  <Reference/>
+</ProblemDiagram>

@@ -1,0 +1,68 @@
+package com.example.demo.service;
+
+import static org.junit.Assert.*;
+
+import java.io.File;
+
+import org.junit.Test;
+
+import com.example.demo.LSP.LSPMerge;
+import com.github.gumtreediff.tree.EMFTreeContext;
+
+public class ASTServiceTest {
+
+//	@Test
+//	public void test() {
+//
+//		// emf -> ast -> diff
+//				String filePath = "paper/emf-xmi-new.xml";
+//				EMFTreeContext context1 = ASTService.generateXmlAST(filePath);
+//				EMFTreeContext context2 = ASTService.generateXmlAST(filePath);
+//				LSPMerge.diff1(filePath, context1, context2);
+//				System.out.println();
+//	}
+	@Test
+	public void test2() {
+		String lastXmlPath = "D:\\gitee\\CCEditor\\backend\\PF\\vscodetest_359_415undefined\\diagram7\\diagram_7_1618562204878_ef5f_last.xml";
+		String lastTextPath = "D:\\gitee\\CCEditor\\backend\\PF\\vscodetest_359_415undefined\\diagram7\\diagram_7_1618562204878_ef5f_last.xml.txt";
+		EMFTreeContext last = ASTService.generateXmlAST(lastXmlPath);
+		last.setRoot(ASTService.rebuildASTFromFile(lastTextPath));
+
+		String newestXmlPath = "D:\\gitee\\CCEditor\\backend\\PF\\vscodetest_359_415undefined\\diagram7\\diagram_7_1618562204878_295f_newest.xml";
+		String newestTextPath = "D:\\gitee\\CCEditor\\backend\\PF\\vscodetest_359_415undefined\\diagram7\\diagram_7_1618562204878_295f_newest.xml.txt";
+		EMFTreeContext newest = ASTService.generateXmlAST(newestXmlPath);
+		newest.setRoot(ASTService.rebuildASTFromFile(newestTextPath));
+		
+		String remoteXmlPath = "D:\\gitee\\CCEditor\\backend\\PF\\vscodetest_359_415undefined\\diagram7\\diagram_7_1618562204878_288b_remote.xml";
+		String remoteTextPath = "D:\\gitee\\CCEditor\\backend\\PF\\vscodetest_359_415undefined\\diagram7\\diagram_7_1618562204878_288b_remote.xml.txt";
+		EMFTreeContext remote = ASTService.generateXmlAST(remoteXmlPath);
+		last.setRoot(ASTService.rebuildASTFromFile(remoteTextPath));
+
+		EMFTreeContext merge = LSPMerge.three_way_merge("",				last,				newest, remote);
+		String mergeXmlPath = "D:\\gitee\\CCEditor\\backend\\PF\\vscodetest_359_415undefined\\diagram7\\merge.xml";
+		File mergeFile=ASTService.generateEMFXmlFile(merge.getRoot(), mergeXmlPath);
+		String version = FileOperation.getFileSha1(mergeFile);
+		System.out.println(version);
+	}
+//	@Test
+//	public void test2() {
+//		String lastXmlPath = "D:\\gitee\\CCEditor\\backend\\PF\\vscodetest_359_415undefined\\1618562206148_ef5f_last.xml";
+//		String lastTextPath = "D:\\gitee\\CCEditor\\backend\\PF\\vscodetest_359_415undefined\\1618562206148_ef5f_last.xml.txt";
+//		EMFTreeContext last = ASTService.generateXmlAST(lastXmlPath);
+//		last.setRoot(ASTService.rebuildASTFromFile(lastTextPath));
+//
+//		String newestXmlPath = "D:\\gitee\\CCEditor\\backend\\PF\\vscodetest_359_415undefined\\1618562206148_288b_newest.xml";
+//		String newestTextPath = "D:\\gitee\\CCEditor\\backend\\PF\\vscodetest_359_415undefined\\1618562206148_288b_newest.xml.txt";
+//		EMFTreeContext newest = ASTService.generateXmlAST(newestXmlPath);
+//		newest.setRoot(ASTService.rebuildASTFromFile(newestTextPath));
+//		
+//		String remoteXmlPath = "D:\\gitee\\CCEditor\\backend\\PF\\vscodetest_359_415undefined\\1618562206148_295f_remote.xml";
+//		String remoteTextPath = "D:\\gitee\\CCEditor\\backend\\PF\\vscodetest_359_415undefined\\1618562206148_295f_remote.xml.txt";
+//		EMFTreeContext remote = ASTService.generateXmlAST(remoteXmlPath);
+//		last.setRoot(ASTService.rebuildASTFromFile(remoteTextPath));
+//
+//		EMFTreeContext merge = LSPMerge.three_way_merge("",				last,				newest, remote);
+//		System.out.println();
+//	}
+
+}

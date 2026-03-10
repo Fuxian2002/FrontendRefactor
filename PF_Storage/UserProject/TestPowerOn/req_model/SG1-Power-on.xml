@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScenarioGraph>
+  <title>SG1-Power-on</title>
+  <Requirement>Power-on</Requirement>
+  <NodeList>
+    <IntNode>
+      <BehIntNode>
+        <Element node_no="1" node_locality="180,160">
+          <from node_no="1" node_type="Branch" node_locality="0,0"/>
+          <to node_no="3" node_type="Branch" node_locality="0,0"/>
+          <pre_condition phenomenon_no="1" phenomenon_name=" D1 power-on pulse signal" phenomenon_type="event" phenomenon_from="SC" phenomenon_to=""/>
+        </Element>
+        <Element node_no="2" node_locality="250,340">
+          <from node_no="1" node_type="Branch" node_locality="0,0"/>
+          <to node_no="3" node_type="Branch" node_locality="0,0"/>
+          <pre_condition phenomenon_no="1" phenomenon_name=" D2 power-on pulse signal" phenomenon_type="event" phenomenon_from="SC" phenomenon_to=""/>
+        </Element>
+      </BehIntNode>
+      <ConnIntNode/>
+      <ExpIntNode>
+        <Element node_no="3" node_locality="420,160">
+          <from node_no="2" node_type="Branch" node_locality="400,100"/>
+          <to node_no="4" node_type="Branch" node_locality="463,395"/>
+          <pre_condition phenomenon_no="1" phenomenon_name=" D1 power-on state state" phenomenon_type="event" phenomenon_from="D1" phenomenon_to=""/>
+        </Element>
+        <Element node_no="4" node_locality="520,340">
+          <from node_no="2" node_type="Branch" node_locality="400,100"/>
+          <to node_no="4" node_type="Branch" node_locality="463,395"/>
+          <pre_condition phenomenon_no="1" phenomenon_name=" D2 power-on state state" phenomenon_type="event" phenomenon_from="D2" phenomenon_to=""/>
+        </Element>
+      </ExpIntNode>
+    </IntNode>
+    <ControlNode>
+      <StartNode>
+        <Element node_no="1" node_locality="170,40">
+          <from/>
+          <to node_no="1" node_type="Branch" node_locality="0,0"/>
+        </Element>
+        <Element node_no="2" node_locality="440,40">
+          <from/>
+          <to node_no="2" node_type="Branch" node_locality="400,100"/>
+        </Element>
+      </StartNode>
+      <EndNode>
+        <Element node_no="1" node_locality="245,440">
+          <from node_no="3" node_type="Branch" node_locality="0,0"/>
+          <to/>
+        </Element>
+        <Element node_no="2" node_locality="495,440">
+          <from node_no="4" node_type="Branch" node_locality="463,395"/>
+          <to/>
+        </Element>
+      </EndNode>
+      <DecisionNode/>
+      <MergeNode/>
+      <BranchNode>
+        <Element node_no="1" node_locality="130,100">
+          <from node_no="1" node_type="Start" node_locality="0,0"/>
+          <to node_no="1" node_type="BehInt" node_locality="180,160"/>
+          <to node_no="2" node_type="BehInt" node_locality="250,340"/>
+        </Element>
+        <Element node_no="2" node_locality="400,100">
+          <from node_no="2" node_type="Start" node_locality="380,43"/>
+          <to node_no="3" node_type="ExpInt" node_locality="420,160"/>
+          <to node_no="4" node_type="ExpInt" node_locality="520,340"/>
+        </Element>
+        <Element node_no="3" node_locality="150,390">
+          <from node_no="1" node_type="BehInt" node_locality="180,160"/>
+          <from node_no="2" node_type="BehInt" node_locality="250,340"/>
+          <to node_no="1" node_type="End" node_locality="0,0"/>
+        </Element>
+        <Element node_no="4" node_locality="420,390">
+          <from node_no="3" node_type="ExpInt" node_locality="420,160"/>
+          <from node_no="4" node_type="ExpInt" node_locality="520,340"/>
+          <to node_no="2" node_type="End" node_locality="495,440"/>
+        </Element>
+      </BranchNode>
+      <DelayNode/>
+    </ControlNode>
+  </NodeList>
+  <LineList>
+    <BehOrder>
+      <Element line_no="4" turnings="" from_locality="0,0" from_no="1" from_type="Start" to_locality="0,0" to_no="1" to_type="Branch"/>
+      <Element line_no="6" turnings="" from_locality="0,0" from_no="1" from_type="Branch" to_locality="180,160" to_no="1" to_type="BehInt"/>
+      <Element line_no="8" turnings="" from_locality="0,0" from_no="1" from_type="Branch" to_locality="250,340" to_no="2" to_type="BehInt"/>
+      <Element line_no="10" turnings="" from_locality="180,160" from_no="1" from_type="BehInt" to_locality="0,0" to_no="3" to_type="Branch"/>
+      <Element line_no="12" turnings="" from_locality="250,340" from_no="2" from_type="BehInt" to_locality="0,0" to_no="3" to_type="Branch"/>
+      <Element line_no="14" turnings="" from_locality="0,0" from_no="3" from_type="Branch" to_locality="0,0" to_no="1" to_type="End"/>
+    </BehOrder>
+    <BehEnable>
+      <Element line_no="1" turnings="" from_locality="180,160" from_no="1" from_type="BehInt" to_locality="420,160" to_no="3" to_type="ExpInt" line_condition=""/>
+      <Element line_no="2" turnings="" from_locality="250,340" from_no="2" from_type="BehInt" to_locality="520,340" to_no="4" to_type="ExpInt" line_condition=""/>
+    </BehEnable>
+    <Synchrony/>
+    <ExpOrder>
+      <Element line_no="3" turnings="" from_locality="380,43" from_no="2" from_type="Start" to_locality="400,100" to_no="2" to_type="Branch" line_condition=""/>
+      <Element line_no="5" turnings="" from_locality="400,100" from_no="2" from_type="Branch" to_locality="420,160" to_no="3" to_type="ExpInt" line_condition=""/>
+      <Element line_no="7" turnings="" from_locality="400,100" from_no="2" from_type="Branch" to_locality="520,340" to_no="4" to_type="ExpInt" line_condition=""/>
+      <Element line_no="9" turnings="" from_locality="420,160" from_no="3" from_type="ExpInt" to_locality="463,395" to_no="4" to_type="Branch" line_condition=""/>
+      <Element line_no="11" turnings="" from_locality="520,340" from_no="4" from_type="ExpInt" to_locality="463,395" to_no="4" to_type="Branch" line_condition=""/>
+      <Element line_no="13" turnings="" from_locality="463,395" from_no="4" from_type="Branch" to_locality="495,440" to_no="2" to_type="End" line_condition=""/>
+    </ExpOrder>
+    <ExpEnable/>
+  </LineList>
+</ScenarioGraph>

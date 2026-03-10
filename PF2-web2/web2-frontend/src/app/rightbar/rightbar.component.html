@@ -1,0 +1,151 @@
+<div class="all">
+  <ul style="display: block">
+    <li class="title">
+      &nbsp;建模步骤
+      <div class="content">
+        <ul class="content">
+          <li [class.selected]="step === 1">
+            &nbsp;步骤 1: 载入问题图
+          </li>
+          <li [class.selected]="step === 2 || step === 3 || step === 4 || step === 5">
+            &nbsp;步骤 2: 构建情景图
+            <ul style="background: #1874CD">
+              <li [class.selectedli]="step === 3">2.1: 绘制情景图</li>
+              <li [class.selectedli]="step === 4 ">2.2: 检查情景图</li>
+            </ul>
+          </li>
+          <!-- <li [class.selected]="step === 5">
+            &nbsp;步骤 3:问题解耦
+          </li>
+          <li [class.selected]="step === 6 || step === 7">
+            &nbsp;步骤 4:问题投影
+            <ul style="background: #1874CD">
+              <li [class.selectedli]="step === 6">4.1:良构性检查</li>
+              <li [class.selectedli]="step === 7">4.2:投影</li>
+              <li [class.selectedli]="step === 8">4.3:生成软件需求规约</li>
+            </ul>
+          </li> -->
+        </ul>
+      </div>
+    </li><br>
+    <button class='btn1' id="back" (click)="back()" [class.disable]="step == 1">上一步</button>
+    <button class='btn2' id="next" (click)="check()">下一步</button>
+
+    <li *ngIf="!open1;else elseOpen1" (click)="setOpen1()" class="title">&nbsp;+ 图</li>
+    <ng-template #elseOpen1>
+      <li (click)="setOpen1()" class="title">&nbsp;- 图</li>
+      <div class="list">
+        <ul *ngIf="project">
+          <li>
+            {{project.title}}<br>
+            <ul>
+              {{project.contextDiagram.title}}
+              <br>
+            </ul>
+            <ul>
+              {{project.problemDiagram.title}}
+              <br>
+            </ul>
+            <ul *ngIf="project.scenarioGraphList.length != 0">
+              情景图<br>
+              <li *ngFor="let SG of project.scenarioGraphList">
+                {{SG.title}}
+                <br>
+              </li>
+            </ul>
+            <ul *ngIf="project.subProblemDiagramList.length != 0">
+              子问题图<br>
+              <li *ngFor="let SPD of project.subProblemDiagramList">
+                {{SPD.title}}<br>
+              </li>
+            </ul>
+        </ul>
+      </div>
+    </ng-template>
+    <li *ngIf="!open2;else elseOpen2" (click)="setOpen2()" class="title">&nbsp;+ 现象</li>
+    <ng-template #elseOpen2>
+      <li (click)="setOpen2()" class="title">&nbsp;- 现象</li>
+      <div class="content">
+        <table *ngIf="open2" class="content">
+          <tr>
+            <th>名称</th>
+            <th>描述</th>
+            <th>类型</th>
+          </tr>
+          <tr *ngFor="let phe of pheList">
+            <td>phe{{phe.phenomenon_no}}</td>
+            <td>{{phe.phenomenon_name}}</td>
+            <td>{{phe.phenomenon_type}}</td>
+          </tr>
+        </table>
+      </div>
+    </ng-template>
+    <li *ngIf="!open3;else elseOpen3" (click)="setOpen3()" class="title">&nbsp;+ 交互</li>
+    <ng-template #elseOpen3>
+      <li (click)="setOpen3()" class="title">&nbsp;- 交互</li>
+      <div class="content">
+        <table *ngIf="open3" class="content">
+          <tr>
+            <th>名称</th>
+            <th>发起者</th>
+            <th>接收者</th>
+            <th>内容</th>
+          </tr>
+          <tr *ngFor="let phe of pheList">
+            <td>int{{phe.phenomenon_no}}</td>
+            <td>{{phe.phenomenon_from}}</td>
+            <td>{{phe.phenomenon_to}}</td>
+            <td>{{phe.phenomenon_name}}</td>
+          </tr>
+        </table>
+      </div>
+    </ng-template>
+    <li *ngIf="!open4;else elseOpen4" (click)="setOpen4()" class="title">&nbsp;+ 引用</li>
+    <ng-template #elseOpen4>
+      <li (click)="setOpen4()" class="title">&nbsp;- 引用</li>
+      <div class="content">
+        <table *ngIf="open4" class="content">
+          <tr>
+            <th>名称</th>
+            <th>发起者</th>
+            <th>接收者</th>
+            <th>内容</th>
+            <th>约束</th>
+          </tr>
+          <tr *ngFor="let phe of reqPheList">
+            <td>req{{phe.phenomenon_requirement}}</td>
+            <td>{{phe.phenomenon_from}}</td>
+            <td>{{phe.phenomenon_to}}</td>
+            <td>{{phe.phenomenon_name}}</td>
+            <td>{{phe.phenomenon_constraint}}</td>
+          </tr>
+        </table>
+      </div>
+    </ng-template>
+    <li *ngIf="!open5;else elseOpen5" (click)="setOpen5()" class="title">&nbsp;+ 其他信息</li>
+    <ng-template #elseOpen5>
+      <li (click)="setOpen5()" class="title">&nbsp;- 其他信息</li>
+      <div class="content">
+        <table *ngIf="open5" class="content">
+          <tr>接口:</tr>
+          <tr *ngFor="let interface of project.contextDiagram.interfaceList">
+            <td>{{interface.interface_description}}</td>
+          </tr>
+          <br>
+          <tr>引用:</tr>
+          <tr *ngFor="let constraint of project.problemDiagram.constraintList">
+            <td>{{constraint.constraint_description}}</td>
+          </tr>
+          <tr *ngFor="let reference of project.problemDiagram.referenceList">
+            <td>{{reference.reference_description}}</td>
+          </tr>
+          <br>
+          <tr *ngFor="let req of project.problemDiagram.requirementList">
+            <td>req{{req.requirement_no}}: {{req.requirement_context}}</td>
+          </tr>
+        </table>
+      </div>
+    </ng-template>
+  </ul>
+
+</div>

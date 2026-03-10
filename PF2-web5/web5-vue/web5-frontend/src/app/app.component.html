@@ -1,0 +1,58 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="main">
+  <app-topbar (openEvent)="getProjects($event)" (openOwlEvent)="getOwls($event)" (openPOwlEvent)="getPOwls($event)">
+  </app-topbar>
+  <app-leftbar></app-leftbar>
+  <app-drawingboard></app-drawingboard>
+  <app-rightbar (errorsEvent)="getErrors($event)"></app-rightbar>
+  <app-trace-editor></app-trace-editor>
+  <app-data-dependencies-editor></app-data-dependencies-editor>
+  <app-control-dependencies-editor></app-control-dependencies-editor>
+  <div id="popLayer"></div>
+  <div id="popBox">
+    <div class="table">
+      <span class="label">检查结果：</span>
+      <button class="close" (click)="close('popBox')">X</button>
+    </div>
+    <div class="content">
+      <div *ngFor="let error of errors">
+        <div *ngIf="error.errorList.length > 0; else correct">
+          <p *ngIf="error.title != null">{{error.title}} is not a correct senario graph:</p>
+          <p *ngFor="let errMsg of error.errorList">
+            {{errMsg}}
+            <!-- <button class="button" (click)="getStrategy(errMsg)">strategy</button> -->
+          </p>
+        </div>
+        <ng-template #correct>
+          <p *ngIf="error.title != null">{{error.title}} 是一幅正确的情景图.</p>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  <!---项目选择--->
+  <!-- open -->
+  <div id="OpenProject" class="OpenProject">
+    <div class="table">
+      <span class="label">OpenProject:</span>
+      <button class="close" (click)="close('OpenProject')">X</button>
+    </div>
+    <div class="showPro">
+      <form id="op">
+        <ul *ngFor="let pro of projects">
+          <li [class.selected]="project===pro" (click)="search(pro)">
+            {{pro}}
+            <ul *ngIf="project === pro">
+              <li *ngFor="let version of versions"><label><input type="radio" name="project" id="version"
+                    value="{{version}}">{{version}}</label></li>
+            </ul>
+          </li>
+        </ul>
+      </form>
+    </div>
+    <div style="position: absolute;bottom:10px;">
+      <button class="button" (click)="open()">Open</button>
+      <button class="button" (click)="close('OpenProject')">Cancel</button>
+    </div>
+  </div>
+
+</div>

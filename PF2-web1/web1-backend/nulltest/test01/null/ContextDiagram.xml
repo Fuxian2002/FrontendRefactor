@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContextDiagram>
+  <title>ContextDiagram</title>
+  <Machine machine_name="machine" machine_shortname="M1" machine_locality="275,290,100,200"/>
+  <ProblemDomain>
+    <GivenDomain/>
+    <DesignDomain/>
+  </ProblemDomain>
+  <Interface/>
+</ContextDiagram>

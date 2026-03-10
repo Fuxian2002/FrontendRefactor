@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(powershell:*)",
+      "Bash(ls:*)",
+      "Bash(curl:*)",
+      "Bash(mvn clean:*)",
+      "Bash(mvn compile:*)",
+      "Bash(fix_step3.java:*)",
+      "Bash(cp:*)",
+      "Bash(\"D:/前端重构/项目版本1.0/https---github.com-Fuxian2002-StoreHouseMurasame-main/前端重构/code/restart_web5.sh\":*)",
+      "Bash(pkill:*)",
+      "Bash(rm:*)",
+      "Bash(npm run:*)"
+    ]
+  }
+}

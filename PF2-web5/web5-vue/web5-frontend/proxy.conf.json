@@ -1,0 +1,18 @@
+{
+  "/file": {
+    "target": "http://localhost:7086",
+    "secure": false
+  },
+  "/project": {
+    "target": "http://localhost:7086",
+    "secure": false
+  },
+  "/verfication": {
+    "target": "http://localhost:7086",
+    "secure": false
+  },
+  "/webSocket": {
+    "target": "http://localhost:7086",
+    "secure": false
+  }
+}

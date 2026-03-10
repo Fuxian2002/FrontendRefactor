@@ -1,0 +1,52 @@
+<div>
+  <img src="assets/icons/3.png">
+  <nav style="text-align:center">
+    <ul>
+      <li (click)="backMainPage()">返回</li>
+      <li (click)="openProject()">打开</li>
+      <!-- <li>上传
+        <ul>
+          <li (click)="uploadFile()">
+            上传项目
+          </li>
+          <li (click)="uploadPF()">
+            上传 text pf
+          </li>
+        </ul>
+      </li>    -->
+<!--      <li (click)="uploadFile()">上传</li>-->
+      <li (click)="saveProject()">保存</li>
+<!--      <li (click)="download()">下载</li>-->
+<!--      <li (click)="test()">测试</li>-->
+      <li>
+        下载
+        <ul>
+          <li (click)="download()">XMLProject</li>
+          <li (click)="format()">TranslateFile</li>
+        </ul>
+      </li>
+     
+      <li><a href="http://re4cps.org/help">帮助</a></li>
+      <!-- <li><a href="http://re4cps.org/login">登录</a></li> -->
+      <!-- <li> <a href="http://localhost/workflow?from=diagrambaseddescription">Next Main Step </a> </li> -->
+
+    </ul>
+  </nav>
+  <h3 class="user">{{userName}}</h3>
+  <div class="tab"></div>
+  <form>
+    <input type="file" ng2FileSelect [uploader]="uploader" name="xmlFile" id="xmlFile" class="openfile" webkitdirectory
+      (change)="selectedFileOnChanged($event)" />
+    <!-- <input type="file" id="xmlFile" #picked    class="openfile"  multiple webkitdirectory   (click)="message=''"  (change)="onPicked(picked)"> -->
+  </form>
+  <form>
+    <input type="file" ng2FileSelect [uploader]="uploader" name="pfFile" id="pfFile" class="openfile"
+      (change)="selectedPFOnChanged($event)" />
+    <!-- <input type="file" id="xmlFile" #picked    class="openfile"  multiple webkitdirectory   (click)="message=''"  (change)="onPicked(picked)"> -->
+  </form>
+  <form>
+    <input type="file" ng2FileSelect [uploader]="uploader" name="owlFile" id="ontologyFile" class="openfile"
+      (change)="selectedOWLOnChanged($event)" />
+    <!-- <input type="file" id="xmlFile" #picked    class="openfile"  multiple webkitdirectory   (click)="message=''"  (change)="onPicked(picked)"> -->
+  </form>
+</div>

@@ -1,0 +1,17 @@
+server:
+  port: 7085
+spring:
+  profiles:
+    active: dev
+file:
+  dev-model-dir: dev_model
+  req-model-dir: req_model
+  root-address: ../../PF_Storage/
+  user-address: ../../PF_Storage/UserProject/
+  download-root-address: ../../PF_Storage/Download/
+  pf-root-address: ../../PF_Storage/pf/
+  owl-root-address: ../../PF_Storage/owl/
+  pOwl-root-address: ../../PF_Storage/powl/
+  eOwl-root-address: ../../PF_Storage/eowl/
+  tmp-root-address: ../../PF_Storage/tmp/
+  lastest-project-address: ../../PF_Storage/latest/

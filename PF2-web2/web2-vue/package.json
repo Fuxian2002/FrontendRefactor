@@ -1,0 +1,33 @@
+{
+  "name": "web2-vue",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "axios": "^1.13.5",
+    "backbone": "^1.4.0",
+    "jointjs": "^3.0.3",
+    "jquery": "^3.5.1",
+    "lodash": "^4.17.15",
+    "pinia": "^3.0.4",
+    "vue": "^3.5.25"
+  },
+  "devDependencies": {
+    "@types/backbone": "^1.4.1",
+    "@types/jointjs": "^2.0.0",
+    "@types/jquery": "^3.5.1",
+    "@types/lodash": "^4.14.136",
+    "@types/node": "^24.10.1",
+    "@vitejs/plugin-vue": "^6.0.2",
+    "@vue/tsconfig": "^0.8.1",
+    "sass": "^1.97.3",
+    "typescript": "~5.9.3",
+    "vite": "^7.3.1",
+    "vue-tsc": "^3.1.5"
+  }
+}
