@@ -532,10 +532,14 @@ public class ProjectService {
 			Error error = new Error();
 			List<String> errMsgList = new ArrayList<String>();
 			error.setTitle(SG.getTitle());
+			error.setType("良构性错误");
 			errMsgList.addAll(checkSemantic(SG));    //语义检查,是否有交互关系
 			errMsgList.addAll(checkState(SG,project));    //语义检查，是否既为静态又为动态
 			error.setErrorList(errMsgList);
-			errorList.add(error);
+			// 只添加有错误的情景图
+			if(!errMsgList.isEmpty()) {
+				errorList.add(error);
+			}
 		}
 		return errorList;
 	}
