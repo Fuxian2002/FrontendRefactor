@@ -853,27 +853,44 @@ public class ProjectService {
 
 	private List<ProblemDomain> getProblemDomainBySG(ScenarioGraph SG,Project project) {
 		List<ProblemDomain> problemDomainList = project.getContextDiagram().getProblemDomainList(); //获取全部的问题领域
-		List<Phenomenon> phenomenonList = getPhenomenon(project);    //获取全部的phe
 
 		List<ProblemDomain> problemDomains = new ArrayList<ProblemDomain>();
 		List<Node> intNodeList = SG.getIntNodeList();    //情景图中的交互节点
+
+		System.out.println("[getProblemDomainBySG] ScenarioGraph: " + SG.getTitle());
+		System.out.println("[getProblemDomainBySG] Available problem domains: " + problemDomainList.size());
+		System.out.println("[getProblemDomainBySG] Interaction nodes: " + (intNodeList != null ? intNodeList.size() : "NULL"));
+
+		// 从情景图节点中直接提取现象信息，而不是查询全项目现象
 		for(ProblemDomain problemDomain : problemDomainList) {    //遍历问题领域
 			String pdName = problemDomain.getProblemdomain_shortname();
 			intLoop:
 			for(Node intNode : intNodeList) {    //遍历交互节点
-				int intNo = intNode.getNode_no();
-				for(Phenomenon phenomenon: phenomenonList) {
-					if(phenomenon.getPhenomenon_no() == intNo) {    //找到交互节点对应的phe
-						if(phenomenon.getPhenomenon_from().equals(pdName)) {
-							problemDomains.add(problemDomain);
-							break intLoop;
-						}else if(phenomenon.getPhenomenon_to().equals(pdName)) {
-							problemDomains.add(problemDomain);
-							break intLoop;
-						}
+				// 检查前置条件
+				Phenomenon preCond = intNode.getPre_condition();
+				if(preCond != null) {
+					System.out.println("[getProblemDomainBySG] Node " + intNode.getNode_no() + " pre_condition: from=" + preCond.getPhenomenon_from() + ", to=" + preCond.getPhenomenon_to() + ", checking against pdName=" + pdName);
+					if(preCond.getPhenomenon_from().equals(pdName) || preCond.getPhenomenon_to().equals(pdName)) {
+						System.out.println("[getProblemDomainBySG] MATCHED: Adding " + pdName);
+						problemDomains.add(problemDomain);
+						break intLoop;
+					}
+				}
+				// 检查后置条件
+				Phenomenon postCond = intNode.getPost_condition();
+				if(postCond != null) {
+					System.out.println("[getProblemDomainBySG] Node " + intNode.getNode_no() + " post_condition: from=" + postCond.getPhenomenon_from() + ", to=" + postCond.getPhenomenon_to() + ", checking against pdName=" + pdName);
+					if(postCond.getPhenomenon_from().equals(pdName) || postCond.getPhenomenon_to().equals(pdName)) {
+						System.out.println("[getProblemDomainBySG] MATCHED: Adding " + pdName);
+						problemDomains.add(problemDomain);
+						break intLoop;
 					}
 				}
 			}
+		}
+		System.out.println("[getProblemDomainBySG] Result: " + problemDomains.size() + " problem domains found");
+		for(ProblemDomain pd : problemDomains) {
+			System.out.println("  - " + pd.getProblemdomain_shortname());
 		}
 		return problemDomains;
 	}
