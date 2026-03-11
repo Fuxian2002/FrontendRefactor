@@ -405,8 +405,8 @@ public class FileController {
 //	}
 
 	public String getUserAdd(String username) {
-		// 不需要多用户概念，所有项目都存储在共享的 PF_Storage 目录
-		return addressService.getRootAddress();
+		// 不需要多用户概念，所有项目都存储在共享的 PF_Storage/UserProject 目录
+		return addressService.getUserAddress();
 	}
 
 }
