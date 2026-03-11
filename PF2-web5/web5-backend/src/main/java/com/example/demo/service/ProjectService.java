@@ -3143,6 +3143,9 @@ public class ProjectService {
 					for(int k=0;k<path.size();k++) {
 						if(path.get(k).getNode_type().equals(BehInt)) {
 							Phenomenon phe = pheMap.get(new Integer(path.get(k).getNode_no()));
+							if(phe == null) {
+								continue;
+							}
 							if(domainsMap.containsKey(phe.getPhenomenon_from())) {
 								content += "对" + domainsMap.get(phe.getPhenomenon_from()).getProblemdomain_name();
 							} else if(domainsMap.containsKey(phe.getPhenomenon_to())) {
@@ -3352,6 +3355,9 @@ public class ProjectService {
 					for(int k=0;k<path.size();k++) {
 						if(path.get(k).getNode_type().equals(BehInt)) {
 							Phenomenon phe = pheMap.get(new Integer(path.get(k).getNode_no()));
+							if(phe == null) {
+								continue;
+							}
 							if(domainsMap.containsKey(phe.getPhenomenon_from())) {
 								content += "对" + domainsMap.get(phe.getPhenomenon_from()).getProblemdomain_name();
 							} else if(domainsMap.containsKey(phe.getPhenomenon_to())) {
